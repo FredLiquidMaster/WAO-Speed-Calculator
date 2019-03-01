@@ -1,0 +1,103 @@
+<!-- made by (681)(BOM)MasterLiquid -->
+<!--   simple petite page qui fait le calcul des speeds -->
+<!--   up pour faire un insta dans le jeu WAO           -->
+<HTML style="background-color:#EEEEEE">
+	<head>
+		<script>
+			function calcSpeed(){
+				var time = parseInt(document.getElementById("min").value) * 60 + parseInt(document.getElementById("sec").value);
+				var selLandIn = document.getElementById("landIn");
+				var landIn = selLandIn.options[selLandIn.selectedIndex].text;
+				var nb50=0;
+				var nb25=0;
+				
+				var workTime = time;
+				while(workTime > landIn){
+					workTime *= 0.5;
+					nb50++;
+				}
+				workTime = time;
+				while(workTime > landIn){
+					workTime *= 0.75;
+					nb25++;
+				}
+				var gem50 = nb50*300;
+				var gem25 = nb25*150;
+				document.getElementById("timeSec").innerHTML = time;
+				document.getElementById("rep50").innerHTML = nb50;
+				document.getElementById("rep25").innerHTML = nb25;
+				document.getElementById("gem25").innerHTML = gem25;
+				document.getElementById("gem50").innerHTML = gem50;
+			}
+		</script>
+	</head>
+	<body style="border:solid 1px black;
+				width:400px;
+				height:375px;
+				margin:auto;
+				background-color:#FFFFFF;
+				margin-top:50px;
+				box-shadow: 0px 3px 6px rgba(0,0,0,0.5);">
+	<h3 style="text-align:center">
+		~ WAO SPEED CALCULATOR ~
+	</h3>
+		<form style="margin:10px">
+			TIME:
+			<br>
+			min: <input id="min" size="10">
+			sec: <input id="sec" size="10">
+			<BR>
+			LAND IN (sec) : 
+			<select id="landIn">
+				<option>1</option>
+				<option>2</option>
+				<option selected>3</option>
+				<option>5</option>
+				<option>10</option>
+				<option>15</option>
+				<option>30</option>
+			</select>
+		</form>
+		<p onclick="calcSpeed();" style="text-align:center;
+										border:solid 1px black;
+										background-color:#ccffaa;
+										margin:5px">
+			Calculate speeds
+		</p>
+		<p>	
+			Walk time (sec): 
+			<span id="timeSec">
+				&nbsp;
+			</span>
+		<BR>
+		<hr>
+		<p style="text-align:center">
+			Nb of speed up (50%): 
+			<span id="rep50" style="color:#FF0000;font-size:150%">
+				&nbsp;
+			</span>
+		</p>
+		<p style="text-align:center">
+			amount of gems :
+			<span id="gem50" style="color:#FF0000;font-size:150%">
+				&nbsp;
+			</span>
+		</p>
+		<hr>
+		<p style="text-align:center">
+			Nb of speed up (25%): 
+				<span id="rep25" style="color:#FF5555;font-size:150%">
+					&nbsp;
+				</span>
+		</p>
+		<p style="text-align:center">
+			amount of gems: 
+			<span id="gem25" style="color:#FF0000;font-size:150%">
+				&nbsp;
+			</span>
+		</p>
+	</body>
+	<p style="font-size:50%;margin:0px">
+		made by: (681)(BOM)MasterLiquid \(^^)/ <a href="https://github.com/FredLiquidMaster">source</a>
+	</p>
+</HTML>
